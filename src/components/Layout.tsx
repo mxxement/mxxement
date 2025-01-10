@@ -1,22 +1,34 @@
 import styled from "styled-components";
 
+import Visual from "./Visual";
+
 const Layout = () => {
   return (
-    <LayoutWrap>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-    </LayoutWrap>
+    <>
+      <LayoutWrap>
+        <Visual />
+      </LayoutWrap>
+    </>
   );
 };
 export default Layout;
 
 const LayoutWrap = styled.article`
-  > div {
-    width: 100vw;
-    height: 100vh;
-    color: #fff;
-    background: #111;
+  position: relative;
+  z-index: 1;
+  background: #14110c;
+  color: #fff;
+  &:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    height: 100vw;
+    width: 200vw;
+    background: radial-gradient(#ff98a2, #ff98a200 70%);
+    transform: translateX(-50%) translateY(50vh);
+    opacity: 0.5;
+    pointer-events: none;
   }
 `;
