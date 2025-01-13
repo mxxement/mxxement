@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
+import Header from "./Header";
+import Starfield from "./Star";
 import Visual from "./Visual";
 
 const Layout = () => {
   return (
     <>
+      <Header />
       <LayoutWrap>
         <Visual />
+        <Starfield />
       </LayoutWrap>
     </>
   );
@@ -26,7 +30,7 @@ const LayoutWrap = styled.article`
     z-index: -1;
     height: 100vw;
     width: 200vw;
-    background: radial-gradient(#ff98a2, #ff98a200 70%);
+    background: radial-gradient(#590911, #ff98a200 70%);
     transform: translateX(-50%) translateY(50vh);
     opacity: 0.5;
     pointer-events: none;
