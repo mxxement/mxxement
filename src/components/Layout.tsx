@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 import Header from "./Header";
-import Starfield from "./Star";
 import Visual from "./Visual";
+import Title from "./Title";
+import Marquee from "./Marquee";
 
 const Layout = () => {
   return (
@@ -10,18 +11,17 @@ const Layout = () => {
       <Header />
       <LayoutWrap>
         <Visual />
-        <Starfield />
+        <Marquee />
+        <Title />
       </LayoutWrap>
     </>
   );
 };
 export default Layout;
 
-const LayoutWrap = styled.article`
+const LayoutWrap = styled.section`
   position: relative;
-  z-index: 1;
-  background: #14110c;
-  color: #fff;
+  color: #f9f5ef;
   &:after {
     content: "";
     position: fixed;

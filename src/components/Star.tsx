@@ -42,14 +42,14 @@ const Starfield: React.FC = () => {
     draw(ctx: CanvasRenderingContext2D) {
       const screenX =
         (this.x - window.innerWidth / 2) * (window.innerWidth / this.z) +
-        window.innerWidth / 2;
+        window.innerWidth / 2; // *screenX 별이 화면에 표시 될 위치를 계산, 원근감을 반영하기 위해 z 값 (깊이) 사용
       const screenY =
         (this.y - window.innerHeight / 2) * (window.innerWidth / this.z) +
-        window.innerHeight / 2;
-      const screenRadius = this.radius * (window.innerWidth / this.z);
+        window.innerHeight / 2; // *screenY 별이 화면에 표시 될 위치를 계산, 원근감을 반영하기 위해 z 값 (깊이) 사용
+      const screenRadius = this.radius * (window.innerWidth / this.z); // *screenRadius 별의 크기를 깊이에 따라 조정
 
       ctx.beginPath();
-      ctx.arc(screenX, screenY, screenRadius, 0, Math.PI * 2);
+      ctx.arc(screenX, screenY, screenRadius, 0, Math.PI * 2); //
 
       // Add shadow for a glowing effect
       ctx.shadowBlur = 15; // More pronounced glow
