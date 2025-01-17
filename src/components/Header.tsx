@@ -22,7 +22,7 @@ const Article = styled.article`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px 40px;
+  padding: 20px ${(props) => props.theme.gutter};
   color: #fff;
   box-sizing: border-box;
 `;
@@ -39,7 +39,7 @@ const MenuItem = styled.li`
   position: relative;
   padding: 2px 4px;
   cursor: pointer;
-  transition: 0.4s ease;
+  transition: 0.2s ease;
   &:hover {
     color: #fff;
     background: #de3163;

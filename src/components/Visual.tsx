@@ -2,29 +2,31 @@ import { useRef, useEffect } from "react";
 
 import styled from "styled-components";
 
+import { VisualType } from "../assets/ts/VisualType.ts";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Visual = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  // const scrollRef = useRef<HTMLDivElement>(null);
   const titleLeftRef = useRef<HTMLDivElement>(null);
   const titleRightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.set(scrollRef.current, { y: 0 });
+    // gsap.set(scrollRef.current, { y: 0 });
 
-    gsap.to(scrollRef.current, {
-      y: -100,
-      scrollTrigger: {
-        trigger: scrollRef.current,
-        start: "top",
-        end: "bottom 10%",
-        scrub: true,
-        immediateRender: false,
-      },
-    });
+    // gsap.to(scrollRef.current, {
+    //   y: -100,
+    //   scrollTrigger: {
+    //     trigger: scrollRef.current,
+    //     start: "top",
+    //     end: "bottom 10%",
+    //     scrub: true,
+    //     immediateRender: false,
+    //   },
+    // });
 
     gsap.set([titleLeftRef.current, titleRightRef.current], { x: 0 });
 
@@ -61,24 +63,36 @@ const Visual = () => {
       <Article>
         <Description>
           <TextLeft ref={titleLeftRef}>
-            <MoveTitle>PRIZM</MoveTitle>
+            <MoveTitle>
+              <TransitionInner>PRIZM</TransitionInner>
+            </MoveTitle>
             <SubTitle>
-              <p>Lorem ipsum dolor sit amet</p>
-              <p> consectetur adipisicing elit.</p>
-              <p>Dolores corporis quaerat nesciunt</p>
-              <p> a rerum, dolorem mollitia</p>
+              <TransitionInner animationDelay={0.6}>
+                <p>Lorem ipsum dolor sit amet</p>
+                <p> consectetur adipisicing elit.</p>
+                <p>Dolores corporis quaerat nesciunt</p>
+                <p> a rerum, dolorem mollitia</p>
+              </TransitionInner>
             </SubTitle>
           </TextLeft>
           <TextRight>
             <SubTitle>
-              <p>Laudantium rerum fugiat officiis.</p>
-              <p>Distinctio, quos eos. </p>
-              <p>laborum deleniti ipsum enim?</p>
+              <TransitionInner animationDelay={0.9}>
+                <p>Laudantium rerum fugiat officiis.</p>
+                <p>Distinctio, quos eos. </p>
+                <p>laborum deleniti ipsum enim?</p>
+              </TransitionInner>
             </SubTitle>
-            <MoveTitle ref={titleRightRef}>HIGH</MoveTitle>
+            <MoveTitle ref={titleRightRef}>
+              <TransitionInner animationDelay={0.3}>HIGH</TransitionInner>
+            </MoveTitle>
           </TextRight>
         </Description>
-        <PositioningTitle>BIGBANG x 2NE1 x BABYMONSTER</PositioningTitle>
+        <PositioningTitle>
+          <TransitionInner animationDelay={0.6}>
+            BIGBANG x 2NE1 x BABYMONSTER
+          </TransitionInner>
+        </PositioningTitle>
         {/* <BalloonWrap>
           <Balloon ref={scrollRef}>
             {balloonBg.map((bg, index) => (
@@ -93,11 +107,27 @@ const Visual = () => {
 
 export default Visual;
 
-const Article = styled.article``;
+const Article = styled.article`
+  overflow: hidden;
+`;
+
+const TransitionInner = styled.div<VisualType>`
+  animation: 0.5s ease showing forwards;
+  animation-delay: ${(props) => props.animationDelay}s;
+  opacity: 0;
+  @keyframes showing {
+    from {
+      translate: 0 -70%;
+    }
+    to {
+      translate: 0 0%;
+      opacity: 1;
+    }
+  }
+`;
 
 const Description = styled.div`
-  margin: 0px 40px;
-  overflow: hidden;
+  margin: 0px ${(props) => props.theme.gutter};
 `;
 
 const MoveTitle = styled.div`

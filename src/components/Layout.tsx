@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 import Header from "./Header";
 import Visual from "./Visual";
-import Title from "./Title";
-import Marquee from "./Marquee";
+// import Title from "./Title";
+// import Description from "./Description";
+import WorkList from "./WorkList";
 
 const Layout = () => {
   return (
@@ -11,15 +12,16 @@ const Layout = () => {
       <Header />
       <LayoutWrap>
         <Visual />
-        <Marquee />
-        <Title />
+        {/* <Title /> */}
+        {/* <Description /> */}
+        <WorkList />
       </LayoutWrap>
     </>
   );
 };
 export default Layout;
 
-const LayoutWrap = styled.section`
+const LayoutWrap = styled.article`
   position: relative;
   color: #f9f5ef;
   &:after {

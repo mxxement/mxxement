@@ -1,92 +1,61 @@
-import { useRef } from "react";
-import { useObserver } from "../hooks/useObserver";
-
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Title = () => {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const isVisible = useObserver(targetRef, { isReStart: true, threshold: 0.5 });
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+
+  useEffect(() => {
+    textRefs.current.forEach((el, i) => {
+      if (el) {
+        gsap.set(el, { y: 1000, scale: 15, opacity: 0 });
+        gsap.to(el, {
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: textContainerRef.current,
+            start: `top+=${i * 300}px`, // 각 글자마다 시작 지점 다르게 설정
+            end: "bottom",
+            scrub: 3,
+            markers: true,
+          },
+        });
+      }
+    });
+  }, []);
 
   return (
-    <>
-      <Article ref={targetRef} className={isVisible ? "active" : ""}>
-        <StickyWrap>
-          <AnimationObj>
-            <p>누자베 스 싱고투</p>
-          </AnimationObj>
-          <AnimationObj>
-            <p>술탄 오브 더 디스코</p>
-            <ShowImage
-              src="../assets/images/common/slowglow.webp"
-              alt="슬로우글로우 썸네일"
-            />
-            <p>김간지</p>
-          </AnimationObj>
-          <AnimationObj>
-            <p>저스트뮤직 기리보이</p>
-          </AnimationObj>
-        </StickyWrap>
-      </Article>
-    </>
+    <Article>
+      <TextWrap ref={textContainerRef}>
+        <p>N</p>
+        {[".", "E", ".", "R", ".", "D"].map((char, i) => (
+          <p key={i} ref={(el) => (textRefs.current[i] = el)}>
+            {char}
+          </p>
+        ))}
+      </TextWrap>
+    </Article>
   );
 };
 
 export default Title;
 
-const StickyWrap = styled.div``;
+const Article = styled.article`
+  margin-top: 250px;
+  height: 500vh;
+`;
 
-const AnimationObj = styled.div`
+const TextWrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
-  overflow: hidden;
-  p {
-    transition: 1s ease;
-    translate: 0 150%;
-  }
-`;
-
-const ShowImage = styled.img`
-  width: 0px;
-  clip-path: inset(100%);
-  transition: 1s cubic-bezier(0.8, -0.18, 0, 1.15);
-  @keyframes width {
-    from {
-      width: 0px;
-    }
-    to {
-      width: 130px;
-    }
-  }
-  @keyframes showing {
-    from {
-      clip-path: inset(100%);
-    }
-    to {
-      clip-path: inset(0);
-    }
-  }
-`;
-
-const Article = styled.article`
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  position: relative;
-  height: 100vh;
-  padding: 0px 40px;
-  font-size: 90px;
+  position: sticky;
+  top: calc(50% - 60px);
+  font-size: 120px;
   font-weight: bold;
-  &.active {
-    ${AnimationObj} {
-      p {
-        translate: 0;
-      }
-      ${ShowImage} {
-        animation: 1s cubic-bezier(0.8, -0.18, 0, 1.15) width forwards,
-          1s cubic-bezier(0.8, -0.18, 0, 1.15) showing forwards;
-        animation-delay: 0.4s;
-      }
-    }
-  }
 `;
