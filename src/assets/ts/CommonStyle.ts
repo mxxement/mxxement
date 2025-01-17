@@ -1,7 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 const CommonStyle = createGlobalStyle`
-  body { margin: 0px; font-family: 'pretendard'; background: #111;}
+  body { 
+    margin: 0px; 
+    font-family: 'pretendard'; 
+    color: #f9f5ef;
+    background: #111;
+    overflow-x: hidden;
+  }
   p,dl,ol,ul,li,dd,input,h1,h2,h3,h4,h5,h6,article,section { margin: 0px; padding: 0px; }
   textarea { padding: 0px; resize: none; }
   img { vertical-align: top; }

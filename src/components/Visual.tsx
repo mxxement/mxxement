@@ -107,9 +107,7 @@ const Visual = () => {
 
 export default Visual;
 
-const Article = styled.article`
-  overflow: hidden;
-`;
+const Article = styled.article``;
 
 const TransitionInner = styled.div<VisualType>`
   animation: 0.5s ease showing forwards;

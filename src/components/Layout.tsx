@@ -10,12 +10,12 @@ const Layout = () => {
   return (
     <>
       <Header />
+      <Visual />
       <LayoutWrap>
-        <Visual />
         {/* <Title /> */}
         {/* <Description /> */}
-        <WorkList />
       </LayoutWrap>
+      <WorkList />
     </>
   );
 };
