@@ -1,22 +1,50 @@
 const data = [
   {
     title: "prizm high",
-    developType: "pc&mobile",
+    content:
+      "EL GRITO is El Confidencial's magazine dedicated to art, design, and architecture. Our goal was to create a visually stunning product while remaining true to the core philosophy of El Confidencial.",
+    workType: [
+      {
+        type: "publishing",
+      },
+    ],
+    developType: "pc mobile",
     imageUrl: "/assets/images/common/slowglow.webp",
   },
   {
     title: "prizm high",
-    developType: "webview",
-    imageUrl: "/assets/images/common/noice.webp",
+    content:
+      "EL GRITO is El Confidencial's magazine dedicated to art, design, and architecture. Our goal was to create a visually stunning product while remaining true to the core philosophy of El Confidencial.",
+    workType: [
+      {
+        type: "publishing",
+      },
+    ],
+    developType: "pc mobile",
+    imageUrl: "/assets/images/common/slowglow.webp",
   },
   {
     title: "prizm high",
-    developType: "pc",
-    imageUrl: "/assets/images/common/hjretail.jpg",
+    content:
+      "EL GRITO is El Confidencial's magazine dedicated to art, design, and architecture. Our goal was to create a visually stunning product while remaining true to the core philosophy of El Confidencial.",
+    workType: [
+      {
+        type: "publishing",
+      },
+    ],
+    developType: "pc mobile",
+    imageUrl: "/assets/images/common/slowglow.webp",
   },
   {
     title: "prizm high",
-    developType: "mobile",
+    content:
+      "EL GRITO is El Confidencial's magazine dedicated to art, design, and architecture. Our goal was to create a visually stunning product while remaining true to the core philosophy of El Confidencial.",
+    workType: [
+      {
+        type: "publishing",
+      },
+    ],
+    developType: "pc mobile",
     imageUrl: "/assets/images/common/slowglow.webp",
   },
 ];

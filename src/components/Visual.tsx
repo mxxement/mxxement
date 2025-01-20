@@ -64,10 +64,10 @@ const Visual = () => {
         <Description>
           <TextLeft ref={titleLeftRef}>
             <MoveTitle>
-              <TransitionInner>PRIZM</TransitionInner>
+              <TransitionInner animationDelay={0.6}>PRIZM</TransitionInner>
             </MoveTitle>
             <SubTitle>
-              <TransitionInner animationDelay={0.6}>
+              <TransitionInner animationDelay={1.2}>
                 <p>Lorem ipsum dolor sit amet</p>
                 <p> consectetur adipisicing elit.</p>
                 <p>Dolores corporis quaerat nesciunt</p>
@@ -77,19 +77,19 @@ const Visual = () => {
           </TextLeft>
           <TextRight>
             <SubTitle>
-              <TransitionInner animationDelay={0.9}>
+              <TransitionInner animationDelay={1.5}>
                 <p>Laudantium rerum fugiat officiis.</p>
                 <p>Distinctio, quos eos. </p>
                 <p>laborum deleniti ipsum enim?</p>
               </TransitionInner>
             </SubTitle>
             <MoveTitle ref={titleRightRef}>
-              <TransitionInner animationDelay={0.3}>HIGH</TransitionInner>
+              <TransitionInner animationDelay={0.9}>HIGH</TransitionInner>
             </MoveTitle>
           </TextRight>
         </Description>
         <PositioningTitle>
-          <TransitionInner animationDelay={0.6}>
+          <TransitionInner animationDelay={0.9}>
             BIGBANG x 2NE1 x BABYMONSTER
           </TransitionInner>
         </PositioningTitle>
