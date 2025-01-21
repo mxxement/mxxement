@@ -1,4 +1,4 @@
-import { useRef, useEffect, HTMLAttributeAnchorTarget } from "react";
+import { useRef, useEffect } from "react";
 import { useObserver } from "../hooks/useObserver";
 
 import styled from "styled-components";
@@ -11,7 +11,7 @@ import data from "../assets/data/data";
 gsap.registerPlugin(ScrollTrigger);
 
 const WorkList = () => {
-  const layoutRef = useRef<HTMLDivElement>();
+  const layoutRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
