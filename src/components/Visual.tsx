@@ -34,7 +34,7 @@ const Visual = () => {
       x: 50,
       scrollTrigger: {
         trigger: titleLeftRef.current,
-        start: "top 0%",
+        start: "-51% 0%",
         end: "bottom -50%",
         scrub: true,
       },
@@ -44,7 +44,7 @@ const Visual = () => {
       x: -50,
       scrollTrigger: {
         trigger: titleLeftRef.current,
-        start: "top 0%",
+        start: "-51% 0%",
         end: "bottom -50%",
         scrub: true,
       },
@@ -64,10 +64,10 @@ const Visual = () => {
         <Description>
           <TextLeft ref={titleLeftRef}>
             <MoveTitle>
-              <TransitionInner animationDelay={0.6}>PRIZM</TransitionInner>
+              <TransitionInner $animationdelay={0.6}>PRIZM</TransitionInner>
             </MoveTitle>
             <SubTitle>
-              <TransitionInner animationDelay={1.2}>
+              <TransitionInner $animationdelay={1.2}>
                 <p>Lorem ipsum dolor sit amet</p>
                 <p> consectetur adipisicing elit.</p>
                 <p>Dolores corporis quaerat nesciunt</p>
@@ -77,19 +77,19 @@ const Visual = () => {
           </TextLeft>
           <TextRight>
             <SubTitle>
-              <TransitionInner animationDelay={1.5}>
+              <TransitionInner $animationdelay={1.5}>
                 <p>Laudantium rerum fugiat officiis.</p>
                 <p>Distinctio, quos eos. </p>
                 <p>laborum deleniti ipsum enim?</p>
               </TransitionInner>
             </SubTitle>
             <MoveTitle ref={titleRightRef}>
-              <TransitionInner animationDelay={0.9}>HIGH</TransitionInner>
+              <TransitionInner $animationdelay={0.9}>HIGH</TransitionInner>
             </MoveTitle>
           </TextRight>
         </Description>
         <PositioningTitle>
-          <TransitionInner animationDelay={0.9}>
+          <TransitionInner $animationdelay={0.9}>
             BIGBANG x 2NE1 x BABYMONSTER
           </TransitionInner>
         </PositioningTitle>
@@ -111,7 +111,7 @@ const Article = styled.article``;
 
 const TransitionInner = styled.div<VisualType>`
   animation: 0.5s ease showing forwards;
-  animation-delay: ${(props) => props.animationDelay}s;
+  animation-delay: ${(props) => props.$animationdelay}s;
   opacity: 0;
   @keyframes showing {
     from {
@@ -125,14 +125,13 @@ const TransitionInner = styled.div<VisualType>`
 `;
 
 const Description = styled.div`
-  margin: 0px ${(props) => props.theme.gutter};
+  margin: 100px ${(props) => props.theme.gutter} 0px;
 `;
 
 const MoveTitle = styled.div`
   line-height: 1;
   font-size: 320px;
   font-weight: bold;
-  /* color: #de3163; */
 `;
 
 const SubTitle = styled.div`

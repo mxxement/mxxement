@@ -4,6 +4,7 @@ import Header from "./Header";
 import Visual from "./Visual";
 // import Title from "./Title";
 // import Description from "./Description";
+import About from "./About";
 import WorkList from "./WorkList";
 
 const Layout = () => {
@@ -11,10 +12,10 @@ const Layout = () => {
     <>
       <Header />
       <Visual />
-      <LayoutWrap>
-        {/* <Title /> */}
-        {/* <Description /> */}
-      </LayoutWrap>
+      {/* <Title /> */}
+      {/* <Description /> */}
+      <About />
+      <LayoutWrap />
       <WorkList />
     </>
   );
@@ -23,7 +24,6 @@ export default Layout;
 
 const LayoutWrap = styled.article`
   position: relative;
-  color: #f9f5ef;
   &:after {
     content: "";
     position: fixed;

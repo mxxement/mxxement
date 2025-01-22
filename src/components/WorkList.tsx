@@ -15,7 +15,7 @@ const WorkList = () => {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useObserver(layoutRef, { isReStart: true, threshold: 0.5 });
+  const isVisible = useObserver(layoutRef, { isReStart: true });
 
   useEffect(() => {
     imageRefs.current.forEach((image) => {
@@ -49,7 +49,7 @@ const WorkList = () => {
 
   return (
     <>
-      <Article ref={layoutRef}>
+      <Article ref={layoutRef} className={isVisible ? "active" : ""}>
         <ItemWrap>
           {data.map((item, index) => (
             <Item key={index}>
@@ -81,7 +81,7 @@ const WorkList = () => {
 export default WorkList;
 
 const Article = styled.div`
-  margin: 100px ${(props) => props.theme.gutter} 0px;
+  margin: 400px ${(props) => props.theme.gutter} 0px;
 `;
 
 const ItemWrap = styled.ul`
