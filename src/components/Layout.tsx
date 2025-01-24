@@ -5,6 +5,7 @@ import Visual from "./Visual";
 // import Title from "./Title";
 // import Description from "./Description";
 import About from "./About";
+import Experience from "./Experience";
 import WorkList from "./WorkList";
 
 const Layout = () => {
@@ -15,6 +16,7 @@ const Layout = () => {
       {/* <Title /> */}
       {/* <Description /> */}
       <About />
+      <Experience />
       <LayoutWrap />
       <WorkList />
     </>

@@ -12,20 +12,21 @@ const About = () => {
             <p>quaerat eos enim laborum</p>
           </TopText>
           <BottomText>
-            <p>development</p>
-            <p>ux/ui</p>
-            <p>react.js</p>
-            <p>typescript</p>
-            <p>vue.js</p>
-            <p>styled-component</p>
-            <p>sass</p>
-            <p>lottifiles</p>
-            <p>zeplin</p>
-            <p>figma</p>
-            <p>cafe24</p>
-            <p>makeshop</p>
-            <p>gabia</p>
-            <p>godomall</p>
+            <p>KUWAHARA GAAP</p>
+            <p>BRIDGESTONE</p>
+            <p>CEEPO</p>
+            <p>ARAYA</p>
+            <p>ANCHOR</p>
+            <p>TYRELL</p>
+            <p>PANASONIC</p>
+            <p>GUSTO</p>
+            <p>MERIDA</p>
+            <p>MOSSO</p>
+            <p>GIANT</p>
+            <p>TRIGON</p>
+            <p>WHEELER</p>
+            <p>SAVA</p>
+            <p>SCOTT</p>
           </BottomText>
         </Description>
         <RightDescription>
@@ -98,8 +99,8 @@ const BottomText = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 0px 10px;
-  max-width: 400px;
+  gap: 5px 20px;
+  max-width: 500px;
   margin-top: auto;
   font-size: 14px;
   color: #ccc;
