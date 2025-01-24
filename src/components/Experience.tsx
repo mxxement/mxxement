@@ -8,24 +8,58 @@ const Experience = () => {
         <InnerWrap>
           <p className="name">Pagan</p>
           <Contents>
-            <div>1</div>
-            <div>2</div>
+            <div className="date">
+              <p>swift</p>
+              <p>1981-2043</p>
+            </div>
+            <div className="info">
+              <p>position</p>
+              <p>frontend</p>
+              <p>industry</p>
+              <p>e-commerce</p>
+              <p>website</p>
+              <p>http</p>
+            </div>
             <div className="description">
-              <p>and web page editors now use</p>
-              <p>Lorem Ipsum as their default model text</p>
-              <p>If you are going to use a passage of Lorem Ipsum</p>
+              <div>
+                <p>and web page editors now use</p>
+                <p>Lorem Ipsum as their default model text</p>
+                <p>If you are going to use a passage of Lorem Ipsum</p>
+              </div>
+              <div>
+                <p>It is a long established fact that</p>
+                <p>as opposed to using 'Content here,</p>
+                <p>Many desktop publishing packages </p>
+              </div>
             </div>
           </Contents>
         </InnerWrap>
         <InnerWrap>
           <p className="name">Histogram</p>
           <Contents>
-            <div>4</div>
-            <div>5</div>
+            <div className="date">
+              <p>swift</p>
+              <p>1981-2043</p>
+            </div>
+            <div className="info">
+              <p>position</p>
+              <p>frontend</p>
+              <p>industry</p>
+              <p>e commerce</p>
+              <p>website</p>
+              <p>http</p>
+            </div>
             <div className="description">
-              <p>It is a long established fact that</p>
-              <p>as opposed to using 'Content here,</p>
-              <p>Many desktop publishing packages </p>
+              <div>
+                <p>It is a long established fact that</p>
+                <p>as opposed to using 'Content here,</p>
+                <p>Many desktop publishing packages </p>
+              </div>
+              <div>
+                <p>and web page editors now use</p>
+                <p>Lorem Ipsum as their default model text</p>
+                <p>If you are going to use a passage of Lorem Ipsum</p>
+              </div>
             </div>
           </Contents>
         </InnerWrap>
@@ -66,10 +100,27 @@ const InnerWrap = styled.div`
 
 const Contents = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-top: 25px;
+
   .description {
-    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     font-size: 20px;
     color: #ccc;
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-transform: capitalize;
+  }
+
+  .info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
   }
 `;
