@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import Header from "./Header";
+import Footer from "./Footer";
 import Visual from "./Visual";
 // import Title from "./Title";
 // import Description from "./Description";
@@ -19,6 +20,7 @@ const Layout = () => {
       <Experience />
       <LayoutWrap />
       <WorkList />
+      <Footer />
     </>
   );
 };

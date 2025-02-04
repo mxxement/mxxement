@@ -1,9 +1,16 @@
+import { useRef, useEffect } from "react";
+import { useObserver } from "../hooks/useObserver";
 import styled from "styled-components";
 
 const About = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    useObserver(targetRef, 0.5);
+  });
   return (
     <Article>
-      <Title>Cannondale</Title>
+      <Title ref={targetRef}>Cannondale</Title>
       <Contents>
         <Description>
           <TopText>

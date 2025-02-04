@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useObserver } from "../hooks/useObserver";
+// import { useObserver } from "../hooks/useObserver";
 
 import styled from "styled-components";
 
@@ -11,11 +11,8 @@ import data from "../assets/data/data";
 gsap.registerPlugin(ScrollTrigger);
 
 const WorkList = () => {
-  const layoutRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const isVisible = useObserver(layoutRef, { isReStart: true });
 
   useEffect(() => {
     imageRefs.current.forEach((image) => {
@@ -48,33 +45,31 @@ const WorkList = () => {
   }, []);
 
   return (
-    <>
-      <Article ref={layoutRef} className={isVisible ? "active" : ""}>
-        <ItemWrap>
-          {data.map((item, index) => (
-            <Item key={index}>
-              <Image>
-                <img
-                  ref={(el) => (imageRefs.current[index] = el)}
-                  src={item.imageUrl}
-                  alt=""
-                />
-              </Image>
-              <Description ref={(el) => (descriptionRefs.current[index] = el)}>
-                <Title>{item.title}</Title>
-                <p>{item.developType}</p>
-                <div>
-                  {item.workType?.map((type, indexs) => (
-                    <p key={indexs}>{type.type}</p>
-                  ))}
-                </div>
-                <Content>{item.content}</Content>
-              </Description>
-            </Item>
-          ))}
-        </ItemWrap>
-      </Article>
-    </>
+    <Article>
+      <ItemWrap>
+        {data.map((item, index) => (
+          <Item key={index}>
+            <Image>
+              <img
+                ref={(el) => (imageRefs.current[index] = el)}
+                src={item.imageUrl}
+                alt={item.title + " image"}
+              />
+            </Image>
+            <Description ref={(el) => (descriptionRefs.current[index] = el)}>
+              <Title>{item.title}</Title>
+              <p>{item.developType}</p>
+              <div>
+                {item.workType?.map((type, indexs) => (
+                  <p key={indexs}>{type.type}</p>
+                ))}
+              </div>
+              <Content>{item.content}</Content>
+            </Description>
+          </Item>
+        ))}
+      </ItemWrap>
+    </Article>
   );
 };
 
