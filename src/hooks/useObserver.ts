@@ -32,13 +32,6 @@ export const useObserver = (
     );
 
     observer.observe(ref.current);
-
-    // 컴포넌트 언마운트 시 observer 해제
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
   }, [ref, options]);
 
   return isVisible;

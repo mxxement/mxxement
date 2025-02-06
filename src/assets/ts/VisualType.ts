@@ -2,5 +2,5 @@ export interface VisualType {
   padding?: string;
   translateX?: string;
   translateY?: string;
-  $animationdelay?: number;
+  $animationDelay?: number;
 }

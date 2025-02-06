@@ -1,24 +1,58 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useObserver } from "../hooks/useObserver";
 import styled from "styled-components";
 
 const About = () => {
-  const targetRef = useRef<HTMLDivElement>(null);
+  const targetRefA = useRef<HTMLDivElement>(null);
+  const targetRefB = useRef<HTMLDivElement>(null);
+  const targetRefC = useRef<HTMLDivElement>(null);
+  const targetRefD = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    useObserver(targetRef, 0.5);
+  const isVisibleA = useObserver(targetRefA, {
+    isReStart: true,
+    threshold: 0.5,
   });
+
+  const isVisibleB = useObserver(targetRefB, {
+    isReStart: true,
+    threshold: 0.5,
+  });
+
+  const isVisibleC = useObserver(targetRefC, {
+    isReStart: true,
+    threshold: 0.5,
+  });
+
+  const isVisibleD = useObserver(targetRefD, {
+    isReStart: true,
+    threshold: 0.5,
+  });
+
   return (
     <Article>
-      <Title ref={targetRef}>Cannondale</Title>
+      <Title
+        ref={targetRefA}
+        className={isVisibleA ? "active" : ""}
+        translateY="-50%"
+      >
+        Cannondale
+      </Title>
       <Contents>
         <Description>
-          <TopText>
+          <TopText
+            ref={targetRefB}
+            className={isVisibleB ? "active" : ""}
+            translateY="-30%"
+          >
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
             <p>Soluta dolorum tenetur quod inventore consectetur quam </p>
             <p>quaerat eos enim laborum</p>
           </TopText>
-          <BottomText>
+          <BottomText
+            ref={targetRefC}
+            className={isVisibleC ? "active" : ""}
+            translateY="-70%"
+          >
             <p>KUWAHARA GAAP</p>
             <p>BRIDGESTONE</p>
             <p>CEEPO</p>
@@ -36,7 +70,11 @@ const About = () => {
             <p>SCOTT</p>
           </BottomText>
         </Description>
-        <RightDescription>
+        <RightDescription
+          ref={targetRefD}
+          className={isVisibleD ? "active" : ""}
+          translateX="30%"
+        >
           <div>
             <p>voluptatum enim vero amet</p>
             <p>optio nemo error quaera</p>
@@ -68,6 +106,7 @@ export default About;
 const Article = styled.article`
   margin: calc(${(props) => props.theme.gutter} * 8)
     ${(props) => props.theme.gutter} 0px;
+  overflow-x: hidden;
 `;
 
 const Title = styled.div`
@@ -75,6 +114,13 @@ const Title = styled.div`
   font-size: 70px;
   font-weight: bold;
   color: #f9f5ef;
+  opacity: 0;
+  &.active {
+    animation: 0.5s ease
+      ${({ theme, translateX, translateY }) =>
+        theme.keyframes.showing(translateX, translateY)}
+      forwards;
+  }
 `;
 
 const Contents = styled.div`
@@ -98,9 +144,24 @@ const RightDescription = styled(Description)`
   gap: 20px;
   font-size: 16px;
   color: #ccc;
+  opacity: 0;
+  &.active {
+    animation: 0.5s ease
+      ${({ theme, translateX, translateY }) =>
+        theme.keyframes.showing(translateX, translateY)}
+      forwards;
+  }
 `;
 
-const TopText = styled.div``;
+const TopText = styled.div`
+  opacity: 0;
+  &.active {
+    animation: 0.5s ease
+      ${({ theme, translateX, translateY }) =>
+        theme.keyframes.showing(translateX, translateY)}
+      forwards;
+  }
+`;
 
 const BottomText = styled.div`
   display: flex;
@@ -112,4 +173,11 @@ const BottomText = styled.div`
   font-size: 14px;
   color: #ccc;
   text-transform: uppercase;
+  opacity: 0;
+  &.active {
+    animation: 0.5s ease
+      ${({ theme, translateX, translateY }) =>
+        theme.keyframes.showing(translateX, translateY)}
+      forwards;
+  }
 `;

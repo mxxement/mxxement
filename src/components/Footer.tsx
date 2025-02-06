@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <Article>
-      <div>Life is C between B and D</div>
+      <div>brave</div>
       <div>
         <p>© Mxxement 2025</p>
       </div>
