@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useRef, Fragment } from "react";
 import { useObserver } from "../hooks/useObserver";
 import { styleType } from "../assets/ts/StyleType.ts";
 
 import styled from "styled-components";
+
+import data from "../assets/data/company";
 
 const Experience = () => {
   const targetRefA = useRef<HTMLDivElement>(null);
@@ -10,70 +12,75 @@ const Experience = () => {
   const targetRefC = useRef<HTMLDivElement>(null);
 
   const isVisibleA = useObserver(targetRefA, {
-    isReStart: true,
     threshold: 0.5,
   });
 
   const isVisibleB = useObserver(targetRefB, {
-    isReStart: true,
     threshold: 0.5,
   });
 
   const isVisibleC = useObserver(targetRefC, {
-    isReStart: true,
     threshold: 0.5,
   });
 
   return (
     <Article>
-      <Title
-        ref={targetRefA}
-        className={isVisibleA ? "active" : ""}
-        translateY="-20%"
-      >
-        Panasonic
-      </Title>
-      <ContentsWrap>
-        <InnerWrap>
-          <ContentTitle
-            ref={targetRefB}
-            className={`name ${isVisibleB ? "active" : ""}`}
-            translateY="-20%"
+      {data.map((item, index) => (
+        <Fragment key={index}>
+          <Title
+            ref={targetRefA}
+            className={isVisibleA ? "active" : ""}
+            translateY="-10%"
           >
-            Pagan
-          </ContentTitle>
-          <Contents
-            ref={targetRefC}
-            className={isVisibleC ? "active" : ""}
-            translateY="-20%"
-          >
-            <div className="date">
-              <p>swift</p>
-              <p>1981-2043</p>
-            </div>
-            <div className="info">
-              <p>position</p>
-              <p>frontend</p>
-              <p>industry</p>
-              <p>e-commerce</p>
-              <p>website</p>
-              <p>http</p>
-            </div>
-            <div className="description">
-              <div>
-                <p>and web page editors now use</p>
-                <p>Lorem Ipsum as their default model text</p>
-                <p>If you are going to use a passage of Lorem Ipsum</p>
-              </div>
-              <div>
-                <p>It is a long established fact that</p>
-                <p>as opposed to using 'Content here,</p>
-                <p>Many desktop publishing packages </p>
-              </div>
-            </div>
-          </Contents>
-        </InnerWrap>
-      </ContentsWrap>
+            {item.title}
+          </Title>
+          <ContentsWrap>
+            <InnerWrap>
+              <ContentTitle
+                ref={targetRefB}
+                className={isVisibleB ? "active" : ""}
+                translateY="-10%"
+              >
+                {item.contentTitle}
+              </ContentTitle>
+              <Contents
+                ref={targetRefC}
+                className={isVisibleC ? "active" : ""}
+                translateY="-10%"
+              >
+                {item.info.map((infoItem, infoIndex) => (
+                  <div className="date" key={infoIndex}>
+                    <p>{infoItem.title}</p>
+                    <p>{infoItem.date}</p>
+                  </div>
+                ))}
+                {item.info.map((positionItem, positionIndex) => (
+                  <Fragment key={positionIndex}>
+                    {positionItem.position?.map((innerItem, innerIndex) => (
+                      <div className="info" key={innerIndex}>
+                        <p>{innerItem.title}</p>
+                        <p>{innerItem.description}</p>
+                      </div>
+                    ))}
+                  </Fragment>
+                ))}
+                <div className="description">
+                  <div>
+                    <p>and web page editors now use</p>
+                    <p>Lorem Ipsum as their default model text</p>
+                    <p>If you are going to use a passage of Lorem Ipsum</p>
+                  </div>
+                  <div>
+                    <p>It is a long established fact that</p>
+                    <p>as opposed to using 'Content here,</p>
+                    <p>Many desktop publishing packages </p>
+                  </div>
+                </div>
+              </Contents>
+            </InnerWrap>
+          </ContentsWrap>
+        </Fragment>
+      ))}
     </Article>
   );
 };
@@ -81,9 +88,10 @@ const Experience = () => {
 export default Experience;
 
 const Article = styled.article`
+  display: flex;
+  flex-direction: column;
   margin: calc(${(props) => props.theme.gutter} * 8)
     ${(props) => props.theme.gutter} 0px;
-  overflow-x: hidden;
 `;
 
 const Title = styled.div<styleType>`
@@ -91,6 +99,7 @@ const Title = styled.div<styleType>`
   font-size: 70px;
   font-weight: bold;
   color: #f9f5ef;
+  text-transform: capitalize;
   opacity: 0;
   &.active {
     animation: 0.5s ease
@@ -109,19 +118,7 @@ const ContentsWrap = styled.div`
   border-top: 1px solid #fff;
 `;
 
-const InnerWrap = styled.div<styleType>`
-  .name {
-    font-size: 40px;
-    font-weight: bold;
-    opacity: 0;
-    &.active {
-      animation: 0.5s ease
-        ${({ theme, translateX, translateY }) =>
-          theme.keyframes.showing(translateX, translateY)}
-        forwards;
-    }
-  }
-`;
+const InnerWrap = styled.div<styleType>``;
 
 const Contents = styled.div<styleType>`
   display: flex;
@@ -157,4 +154,15 @@ const Contents = styled.div<styleType>`
   }
 `;
 
-const ContentTitle = styled.div<styleType>``;
+const ContentTitle = styled.div<styleType>`
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: capitalize;
+  opacity: 0;
+  &.active {
+    animation: 0.5s ease
+      ${({ theme, translateX, translateY }) =>
+        theme.keyframes.showing(translateX, translateY)}
+      forwards;
+  }
+`;

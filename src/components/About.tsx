@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useObserver } from "../hooks/useObserver";
+import { styleType } from "../assets/ts/StyleType";
 import styled from "styled-components";
 
 const About = () => {
@@ -9,22 +10,18 @@ const About = () => {
   const targetRefD = useRef<HTMLDivElement>(null);
 
   const isVisibleA = useObserver(targetRefA, {
-    isReStart: true,
     threshold: 0.5,
   });
 
   const isVisibleB = useObserver(targetRefB, {
-    isReStart: true,
     threshold: 0.5,
   });
 
   const isVisibleC = useObserver(targetRefC, {
-    isReStart: true,
     threshold: 0.5,
   });
 
   const isVisibleD = useObserver(targetRefD, {
-    isReStart: true,
     threshold: 0.5,
   });
 
@@ -33,7 +30,7 @@ const About = () => {
       <Title
         ref={targetRefA}
         className={isVisibleA ? "active" : ""}
-        translateY="-20%"
+        translateY="-10%"
       >
         Cannondale
       </Title>
@@ -42,7 +39,7 @@ const About = () => {
           <TopText
             ref={targetRefB}
             className={isVisibleB ? "active" : ""}
-            translateY="-20%"
+            translateY="-10%"
           >
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
             <p>Soluta dolorum tenetur quod inventore consectetur quam </p>
@@ -51,7 +48,7 @@ const About = () => {
           <BottomText
             ref={targetRefC}
             className={isVisibleC ? "active" : ""}
-            translateY="-20%"
+            translateY="-10%"
           >
             <p>KUWAHARA GAAP</p>
             <p>BRIDGESTONE</p>
@@ -73,7 +70,7 @@ const About = () => {
         <RightDescription
           ref={targetRefD}
           className={isVisibleD ? "active" : ""}
-          translateX="20%"
+          translateY="-10%"
         >
           <div>
             <p>voluptatum enim vero amet</p>
@@ -106,10 +103,9 @@ export default About;
 const Article = styled.article`
   margin: calc(${(props) => props.theme.gutter} * 8)
     ${(props) => props.theme.gutter} 0px;
-  overflow-x: hidden;
 `;
 
-const Title = styled.div`
+const Title = styled.div<styleType>`
   line-height: 1;
   font-size: 70px;
   font-weight: bold;
@@ -131,7 +127,7 @@ const Contents = styled.div`
   border-top: 1px solid #fff;
 `;
 
-const Description = styled.div`
+const Description = styled.div<styleType>`
   display: flex;
   flex-direction: column;
   line-height: 1.5;
@@ -153,7 +149,7 @@ const RightDescription = styled(Description)`
   }
 `;
 
-const TopText = styled.div`
+const TopText = styled.div<styleType>`
   opacity: 0;
   &.active {
     animation: 0.5s ease
@@ -163,7 +159,7 @@ const TopText = styled.div`
   }
 `;
 
-const BottomText = styled.div`
+const BottomText = styled.div<styleType>`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
