@@ -4,14 +4,14 @@ export const theme = {
   gutter: "40px",
   keyframes: {
     showing: (
-      translateX?: string = "0%",
-      translateY?: string = "0%"
+      translateX: string = "0%",
+      translateY: string = "0%"
     ) => keyframes`
       from {
-        translate: ${translateX} ${translateY};
+        transform: translate(${translateX}, ${translateY});
       }
       to {
-        translate: 0 0%;
+        transform: translate(0, 0);
         opacity: 1;
       }
     `,

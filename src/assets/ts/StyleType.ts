@@ -1,4 +1,4 @@
-export interface VisualType {
+export interface styleType {
   padding?: string;
   translateX?: string;
   translateY?: string;

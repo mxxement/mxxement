@@ -33,7 +33,7 @@ const About = () => {
       <Title
         ref={targetRefA}
         className={isVisibleA ? "active" : ""}
-        translateY="-50%"
+        translateY="-20%"
       >
         Cannondale
       </Title>
@@ -42,7 +42,7 @@ const About = () => {
           <TopText
             ref={targetRefB}
             className={isVisibleB ? "active" : ""}
-            translateY="-30%"
+            translateY="-20%"
           >
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
             <p>Soluta dolorum tenetur quod inventore consectetur quam </p>
@@ -51,7 +51,7 @@ const About = () => {
           <BottomText
             ref={targetRefC}
             className={isVisibleC ? "active" : ""}
-            translateY="-70%"
+            translateY="-20%"
           >
             <p>KUWAHARA GAAP</p>
             <p>BRIDGESTONE</p>
@@ -73,7 +73,7 @@ const About = () => {
         <RightDescription
           ref={targetRefD}
           className={isVisibleD ? "active" : ""}
-          translateX="30%"
+          translateX="20%"
         >
           <div>
             <p>voluptatum enim vero amet</p>

@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 
 import styled from "styled-components";
 
-import { VisualType } from "../assets/ts/VisualType.ts";
+import { styleType } from "../assets/ts/StyleType.ts";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -87,7 +87,7 @@ const Article = styled.article`
   overflow: hidden;
 `;
 
-const TransitionInner = styled.div<VisualType>`
+const TransitionInner = styled.div<styleType>`
   animation: 0.5s ease
     ${({ theme, translateX, translateY }) =>
       theme.keyframes.showing(translateX, translateY)}

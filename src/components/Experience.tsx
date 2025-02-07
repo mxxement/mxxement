@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { useObserver } from "../hooks/useObserver";
+import { styleType } from "../assets/ts/StyleType.ts";
+
 import styled from "styled-components";
 
 const Experience = () => {
@@ -27,23 +29,23 @@ const Experience = () => {
       <Title
         ref={targetRefA}
         className={isVisibleA ? "active" : ""}
-        translateY="-50%"
+        translateY="-20%"
       >
         Panasonic
       </Title>
       <ContentsWrap>
         <InnerWrap>
-          <div
+          <ContentTitle
             ref={targetRefB}
             className={`name ${isVisibleB ? "active" : ""}`}
-            translateY="-50%"
+            translateY="-20%"
           >
             Pagan
-          </div>
+          </ContentTitle>
           <Contents
             ref={targetRefC}
             className={isVisibleC ? "active" : ""}
-            translateY="-50%"
+            translateY="-20%"
           >
             <div className="date">
               <p>swift</p>
@@ -84,7 +86,7 @@ const Article = styled.article`
   overflow-x: hidden;
 `;
 
-const Title = styled.div`
+const Title = styled.div<styleType>`
   line-height: 1;
   font-size: 70px;
   font-weight: bold;
@@ -107,7 +109,7 @@ const ContentsWrap = styled.div`
   border-top: 1px solid #fff;
 `;
 
-const InnerWrap = styled.div`
+const InnerWrap = styled.div<styleType>`
   .name {
     font-size: 40px;
     font-weight: bold;
@@ -121,7 +123,7 @@ const InnerWrap = styled.div`
   }
 `;
 
-const Contents = styled.div`
+const Contents = styled.div<styleType>`
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
@@ -154,3 +156,5 @@ const Contents = styled.div`
     gap: 30px;
   }
 `;
+
+const ContentTitle = styled.div<styleType>``;
