@@ -72,7 +72,7 @@ const Visual = () => {
           </TextRight>
         </Description>
         <PositioningTitle>
-          <TransitionInner $animationDelay={0.9} translateY="-70%">
+          <TransitionInner $animationDelay={0.9} translateY="-200%">
             BIGBANG x 2NE1 x BABYMONSTER
           </TransitionInner>
         </PositioningTitle>

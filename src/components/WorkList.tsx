@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-// import { useObserver } from "../hooks/useObserver";
+import { useObserver } from "../hooks/useObserver";
 
 import styled from "styled-components";
 
@@ -11,8 +11,13 @@ import data from "../assets/data/data";
 gsap.registerPlugin(ScrollTrigger);
 
 const WorkList = () => {
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const layoutRef = useRef<HTMLElement>(null);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const isVisible = useObserver(layoutRef, {
+    isReStart: false,
+  });
 
   useEffect(() => {
     imageRefs.current.forEach((image) => {
@@ -45,7 +50,7 @@ const WorkList = () => {
   }, []);
 
   return (
-    <Article>
+    <Article ref={layoutRef} className={isVisible ? "active" : ""}>
       <ItemWrap>
         {data.map((item, index) => (
           <Item key={index}>
@@ -75,8 +80,14 @@ const WorkList = () => {
 
 export default WorkList;
 
-const Article = styled.div`
-  margin: 400px ${(props) => props.theme.gutter} 0px;
+const Article = styled.article`
+  margin: calc(${(props) => props.theme.gutter} * 8)
+    ${(props) => props.theme.gutter} 0px;
+  transition: 1s ease;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
 `;
 
 const ItemWrap = styled.ul`

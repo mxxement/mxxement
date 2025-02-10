@@ -1,6 +1,5 @@
 const data = [
   {
-    title: "panasonic",
     contentTitle: "pagan",
     info: [
       {
@@ -28,7 +27,6 @@ const data = [
     ],
   },
   {
-    title: "panasonic",
     contentTitle: "pagan",
     info: [
       {

@@ -18,8 +18,8 @@ const Layout = () => {
       {/* <Description /> */}
       <About />
       <Experience />
-      <LayoutWrap />
       <WorkList />
+      <LayoutWrap />
       <Footer />
     </>
   );

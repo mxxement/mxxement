@@ -12,30 +12,30 @@ const Experience = () => {
   const targetRefC = useRef<HTMLDivElement>(null);
 
   const isVisibleA = useObserver(targetRefA, {
-    threshold: 0.5,
+    threshold: 0.25,
   });
 
   const isVisibleB = useObserver(targetRefB, {
-    threshold: 0.5,
+    threshold: 0.25,
   });
 
   const isVisibleC = useObserver(targetRefC, {
-    threshold: 0.5,
+    threshold: 0.25,
   });
 
   return (
     <Article>
-      {data.map((item, index) => (
-        <Fragment key={index}>
-          <Title
-            ref={targetRefA}
-            className={isVisibleA ? "active" : ""}
-            translateY="-10%"
-          >
-            {item.title}
-          </Title>
-          <ContentsWrap>
-            <InnerWrap>
+      <Title
+        ref={targetRefA}
+        className={isVisibleA ? "active" : ""}
+        translateY="-10%"
+      >
+        nosnoventa
+      </Title>
+      <ListWrap>
+        {data.map((item, index) => (
+          <Fragment key={index}>
+            <ContentsWrap>
               <ContentTitle
                 ref={targetRefB}
                 className={isVisibleB ? "active" : ""}
@@ -54,16 +54,38 @@ const Experience = () => {
                     <p>{infoItem.date}</p>
                   </div>
                 ))}
-                {item.info.map((positionItem, positionIndex) => (
-                  <Fragment key={positionIndex}>
-                    {positionItem.position?.map((innerItem, innerIndex) => (
-                      <div className="info" key={innerIndex}>
-                        <p>{innerItem.title}</p>
-                        <p>{innerItem.description}</p>
-                      </div>
-                    ))}
-                  </Fragment>
-                ))}
+                <div className="info">
+                  {item.info.map((infoItem, infoIndex) => (
+                    <Fragment key={infoIndex}>
+                      {infoItem.position?.map((innerItem, innerIndex) => (
+                        <Fragment key={innerIndex}>
+                          <p>{innerItem.title}</p>
+                          <p>{innerItem.description}</p>
+                        </Fragment>
+                      ))}
+                    </Fragment>
+                  ))}
+                  {item.info.map((infoItem, infoIndex) => (
+                    <Fragment key={infoIndex}>
+                      {infoItem.industry?.map((innerItem, innerIndex) => (
+                        <Fragment key={innerIndex}>
+                          <p>{innerItem.title}</p>
+                          <p>{innerItem.description}</p>
+                        </Fragment>
+                      ))}
+                    </Fragment>
+                  ))}
+                  {item.info.map((infoItem, infoIndex) => (
+                    <Fragment key={infoIndex}>
+                      {infoItem.website?.map((innerItem, innerIndex) => (
+                        <Fragment key={innerIndex}>
+                          <p>{innerItem.title}</p>
+                          <p>{innerItem.description}</p>
+                        </Fragment>
+                      ))}
+                    </Fragment>
+                  ))}
+                </div>
                 <div className="description">
                   <div>
                     <p>and web page editors now use</p>
@@ -77,10 +99,10 @@ const Experience = () => {
                   </div>
                 </div>
               </Contents>
-            </InnerWrap>
-          </ContentsWrap>
-        </Fragment>
-      ))}
+            </ContentsWrap>
+          </Fragment>
+        ))}
+      </ListWrap>
     </Article>
   );
 };
@@ -94,8 +116,16 @@ const Article = styled.article`
     ${(props) => props.theme.gutter} 0px;
 `;
 
+const ListWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  margin-top: 15px;
+  padding-top: 45px;
+  border-top: 1px solid #fff;
+`;
+
 const Title = styled.div<styleType>`
-  line-height: 1;
   font-size: 70px;
   font-weight: bold;
   color: #f9f5ef;
@@ -112,13 +142,7 @@ const Title = styled.div<styleType>`
 const ContentsWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 100px;
-  margin-top: 15px;
-  padding-top: 45px;
-  border-top: 1px solid #fff;
 `;
-
-const InnerWrap = styled.div<styleType>``;
 
 const Contents = styled.div<styleType>`
   display: flex;
