@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-import Header from "./Header";
-import Footer from "./Footer";
-import Visual from "./Visual";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Visual from "../components/Visual";
 // import Title from "./Title";
 // import Description from "./Description";
-import About from "./About";
-import Experience from "./Experience";
-import WorkList from "./WorkList";
+import About from "../components/About";
+import Experience from "../components/Experience";
+import WorkList from "../components/WorkList";
 
 const Layout = () => {
   return (
