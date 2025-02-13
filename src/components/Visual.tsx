@@ -1,5 +1,4 @@
 import { useRef, useEffect } from "react";
-
 import styled from "styled-components";
 
 import { styleType } from "../assets/ts/StyleType.ts";
@@ -112,7 +111,7 @@ const SubTitle = styled.div`
 `;
 
 const PositioningTitle = styled(SubTitle)`
-  margin: 200px 40px 0px;
+  margin: 100px 40px 0px;
 `;
 
 const TextLeft = styled.div`

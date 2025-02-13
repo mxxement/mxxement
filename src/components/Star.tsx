@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
+import styled from "styled-components";
+
 const Starfield: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const numStars = 300; // 별의 총 개수
@@ -127,17 +129,40 @@ const Starfield: React.FC = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        display: "block",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        pointerEvents: "none",
-      }}
-    />
+    <LayoutWrap>
+      <canvas
+        ref={canvasRef}
+        style={{
+          display: "block",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          pointerEvents: "none",
+        }}
+      />
+      <Shadow />
+    </LayoutWrap>
   );
 };
 
 export default Starfield;
+const LayoutWrap = styled.article`
+  pointer-events: none;
+`;
+
+const Shadow = styled.div`
+  position: relative;
+  &:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    height: 100vw;
+    width: 200vw;
+    background: radial-gradient(#590911, #ff98a200 70%);
+    transform: translateX(-50%) translateY(50vh);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+`;

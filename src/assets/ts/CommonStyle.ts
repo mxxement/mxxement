@@ -50,6 +50,30 @@ const CommonStyle = createGlobalStyle`
     font-weight: 900;
     font-display: swap;
   }
+
+  .page-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+  }
+
+  .fade-exit {
+    opacity: 1;
+  }
+
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+  }
 `;
 
 export default CommonStyle;
