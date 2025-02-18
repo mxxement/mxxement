@@ -9,7 +9,7 @@ const Header = () => {
       <Logo />
       <Menu $animationDelay={0.6} translateY="-100%">
         <MenuItem>
-          <NavLink to="/work">Adventure</NavLink>
+          <NavLink to="/">Adventure</NavLink>
         </MenuItem>
         <MenuItem>
           <NavLink to="/detail">Story</NavLink>
