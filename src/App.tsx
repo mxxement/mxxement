@@ -13,14 +13,18 @@ import Starfield from "./components/Star";
 import Work from "./page/Work";
 import Detail from "./page/Detail";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
     <TransitionGroup>
-      <CSSTransition key={location.pathname} timeout={3000}>
+      <CSSTransition
+        key={location.pathname}
+        timeout={3000}
+        classNames="transition"
+      >
         <div className="transition">
           <Routes location={location}>
             <Route path="/" element={<Work />} />
@@ -39,7 +43,7 @@ const App = () => {
       <Router>
         <Header />
         <AnimatedRoutes />
-        <Footer />
+        {/* <Footer /> */}
       </Router>
       <Starfield />
     </ThemeProvider>

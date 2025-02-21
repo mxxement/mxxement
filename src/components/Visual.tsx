@@ -65,6 +65,13 @@ const Visual = () => {
             </SubTitle>
             <MoveTitle ref={titleRightRef}>
               <TransitionInner $animationDelay={0.9} translateY="-70%">
+                <video
+                  src="../assets/video/noice.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
                 HIGH
               </TransitionInner>
             </MoveTitle>
@@ -93,6 +100,17 @@ const TransitionInner = styled.div<styleType>`
     forwards;
   animation-delay: ${(props) => props.$animationDelay}s;
   opacity: 0;
+  video {
+    @keyframes videoShowing {
+      100% {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+    width: 175px;
+    clip-path: inset(0 100% 0 0);
+    animation: videoShowing 0.5s ease-in-out forwards;
+    animation-delay: 2.5s;
+  }
 `;
 
 const Description = styled.div`

@@ -51,11 +51,29 @@ const CommonStyle = createGlobalStyle`
     font-display: swap;
   }
 
-  .enter{}
-  .enter-active {}
-  .exit{}
-  .exit-active {}
-  .enter-done{}
+  .transition {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: 1.5s cubic-bezier(0.74, -0.11, 0.24, 1.12);
+  }
+
+  .transition-enter {
+    opacity: 0;
+  }
+
+  .transition-enter-active {
+    opacity: 1;
+  }
+
+  .transition-exit {
+    opacity: 1;
+  }
+
+  .transition-exit-active {
+    opacity: 0;
+  }
 `;
 
 export default CommonStyle;
