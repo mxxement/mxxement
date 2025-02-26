@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Starfield: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const numStars = 300; // 별의 총 개수
-  const movingStarsCount = 50; // 움직이는 별의 총 개수
+  const movingStarsCount = 100; // 움직이는 별의 총 개수
   let stars: Star[] = []; // 별 객체 저장하는 배열
   let lastScrollY = 0; // 마지막 스크롤 위치를 저장해서 스크롤 변화량 계산
 
@@ -30,9 +30,9 @@ const Starfield: React.FC = () => {
     init() {
       const colors = ["#ffffff", "#ffe4c4", "#87ceeb", "#ffdead"];
       this.x = Math.random() * window.innerWidth;
-      this.y = Math.random() * window.innerHeight * 3; // Spread stars vertically over a larger area
+      this.y = Math.random() * window.innerHeight * 4; // Spread stars vertically over a larger area
       this.z = Math.random() * window.innerWidth;
-      this.radius = Math.random() * 1.5 + 0.2; // Smaller stars
+      this.radius = Math.random() * 1.5 + 0.3; // Smaller stars
       this.speed = Math.random() * 0.5 + 0.1;
       this.opacity = Math.random() * 0.5 + 0.5;
       this.twinkleSpeed = Math.random() * 0.1 + 0.02; // Faster twinkle

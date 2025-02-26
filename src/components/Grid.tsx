@@ -1,105 +1,85 @@
 import styled from "styled-components";
 import { useRef } from "react";
 import { useObserver } from "../hooks/useObserver";
+import data, { GridItemType } from "../assets/data/data";
 
 const Grid = () => {
-  const itemUrls = [
-    "item-01.jpg",
-    "empty",
-    "item-02.jpg",
-    "empty",
-    "item-03.jpg",
-    "empty",
-    "empty",
-    "empty",
-    "item-04.jpg",
-    "item-05.jpg",
-    "empty",
-    "item-06.jpg",
-    "empty",
-    "empty",
-    "item-07.jpg",
-    "item-08.jpg",
-    "empty",
-    "empty",
-    "item-09.jpg",
-    "empty",
-    "item-10.jpg",
-    "empty",
-    "item-11.jpg",
-    "empty",
-    "empty",
-    "item-12.jpg",
-    "empty",
-    "item-13.jpg",
-    "empty",
-    "item-14.jpg",
-    "empty",
-    "item-15.jpg",
-    "item-16.jpg",
-    "empty",
-    "empty",
-    "empty",
-    "item-17.jpg",
-    "item-18.jpg",
-  ];
+  // const shuffleUrl = [...itemUrls].sort(() => Math.random() - 0.5);
 
-  const GridItems = ({ itemUrl }: { itemUrl: string }) => {
+  const AddGridItems = [...data, ...Array(30).fill(null)].sort(
+    () => Math.random() - 0.5
+  );
+
+  const GridItemComponent = ({ item }: { item: GridItemType }) => {
     const observerRef = useRef<HTMLLIElement>(null);
     const observerGrid = useObserver(observerRef, { threshold: 0 });
-
     const randomCount = (Math.random() * 0.3).toFixed(1);
 
     return (
-      <GridItem
+      <GridItems
         ref={observerRef}
-        className={itemUrl !== "empty" && observerGrid ? "active" : ""}
+        className={observerGrid ? "active" : ""}
         delay={randomCount}
       >
-        {itemUrl == "empty" ? (
-          ""
-        ) : (
-          <img
-            style={{ width: "100%" }}
-            src={`../assets/images/common/item/${itemUrl}`}
-            alt=""
-          />
+        {item && (
+          <>
+            <img src={item.imageUrl} alt="" />
+            <Titles>{item.title}</Titles>
+          </>
         )}
-      </GridItem>
+      </GridItems>
     );
   };
 
   return (
     <GridWrap>
       <GridInner>
-        {itemUrls.map((itemUrl, index) => (
-          <GridItems key={index} itemUrl={itemUrl} />
+        {AddGridItems.map((item, index) => (
+          <GridItemComponent key={index} item={item} />
         ))}
       </GridInner>
     </GridWrap>
   );
 };
-
 export default Grid;
 
 const GridWrap = styled.div`
   width: calc(100% - 80px);
-  margin: 200px 40px 0px;
+  margin: 200px 40px;
+`;
+
+const Titles = styled.p`
+  padding-top: 10px;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 1s cubic-bezier(0.25, 0.76, 0.355, 1);
+  opacity: 0;
 `;
 
 const GridInner = styled.ul`
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 100px 50px;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 200px 50px;
 `;
 
-const GridItem = styled.li<{ delay: string }>`
-  translate: 0 150%;
-  transition: 0.5s ease;
-  opacity: 0;
+const GridItems = styled.li<{ delay: string }>`
+  transition: 1s cubic-bezier(0.25, 0.76, 0.355, 1);
   &.active {
-    translate: 0 0;
     transition-delay: ${({ delay }) => delay}s;
-    opacity: 1;
+    img {
+      clip-path: inset(0 0 0 0);
+    }
+    ${Titles} {
+      transition-delay: 0.7s;
+      opacity: 1;
+    }
+  }
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: 0.5s ease;
+    clip-path: inset(0 0 100% 0);
   }
 `;
