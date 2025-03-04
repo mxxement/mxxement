@@ -30,15 +30,15 @@ const Starfield: React.FC = () => {
     init() {
       const colors = ["#ffffff", "#ffe4c4", "#87ceeb", "#ffdead"];
       this.x = Math.random() * window.innerWidth;
-      this.y = Math.random() * window.innerHeight * 4; // Spread stars vertically over a larger area
+      this.y = Math.random() * window.innerHeight * 4; // 넓은 영역으로 수직 별 분포
       this.z = Math.random() * window.innerWidth;
-      this.radius = Math.random() * 1.5 + 0.3; // Smaller stars
+      this.radius = Math.random() * 1.5 + 0.3; // 작은 별
       this.speed = Math.random() * 0.5 + 0.1;
       this.opacity = Math.random() * 0.5 + 0.5;
-      this.twinkleSpeed = Math.random() * 0.1 + 0.02; // Faster twinkle
+      this.twinkleSpeed = Math.random() * 0.1 + 0.02; // 속도
       this.color = colors[Math.floor(Math.random() * colors.length)];
-      this.dx = this.isMoving ? (Math.random() - 0.5) * 0.5 : 0; // Random horizontal movement for some stars
-      this.dy = this.isMoving ? (Math.random() - 0.5) * 0.5 : 0; // Random vertical movement for some stars
+      this.dx = this.isMoving ? (Math.random() - 0.5) * 0.5 : 0; // 좌우 별
+      this.dy = this.isMoving ? (Math.random() - 0.5) * 0.5 : 0; // 상하 별
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -53,8 +53,7 @@ const Starfield: React.FC = () => {
       ctx.beginPath();
       ctx.arc(screenX, screenY, screenRadius, 0, Math.PI * 2); //
 
-      // Add shadow for a glowing effect
-      ctx.shadowBlur = 15; // More pronounced glow
+      ctx.shadowBlur = 15;
       ctx.shadowColor = this.color;
 
       ctx.fillStyle = `rgba(${parseInt(this.color.slice(1, 3), 16)}, ${parseInt(
@@ -69,18 +68,17 @@ const Starfield: React.FC = () => {
         this.x += this.dx;
         this.y += this.dy;
 
-        // Wrap around screen edges for moving stars
         if (this.x > window.innerWidth) this.x = 0;
         if (this.x < 0) this.x = window.innerWidth;
         if (this.y > window.innerHeight * 3) this.y = 0;
         if (this.y < 0) this.y = window.innerHeight * 3;
       }
 
-      this.y -= scrollDelta * this.speed; // Move with scroll direction
+      this.y -= scrollDelta * this.speed;
 
       this.opacity += this.twinkleSpeed * (Math.random() > 0.5 ? 1 : -1);
       if (this.opacity > 1) this.opacity = 1;
-      if (this.opacity < 0.3) this.opacity = 0.3; // Allow dimmer stars
+      if (this.opacity < 0.3) this.opacity = 0.3;
 
       this.draw(ctx);
     }
@@ -89,7 +87,7 @@ const Starfield: React.FC = () => {
   const initStars = () => {
     stars = [];
     for (let i = 0; i < numStars; i++) {
-      const isMoving = i < movingStarsCount; // First few stars move randomly
+      const isMoving = i < movingStarsCount;
       stars.push(new Star(isMoving));
     }
   };
